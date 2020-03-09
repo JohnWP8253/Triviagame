@@ -21,88 +21,32 @@
   </head>
 
   <body>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="jumbotron card card-block text-center">
-            <h2>
-              Movie Trivia Game
-            </h2>
-            <p>
-              Check your movie memeory with this quiz! Can you remember which
-              film these one-liners are from?
-            </p>
-
-            <p></p>
-            <p>You have just 15 seconds to answer each quesetion.</p>
-            <p>
-              <a id="start-button" class="btn btn-primary btn-large" href="#"
-                >Start</a
-              >
-            </p>
-          </div>
-          <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4 text-center">
-              Which movie is this quote from?
-            </div>
-            <div id="quotes"></div>
-            <div class="col-md-4"></div>
-          </div>
-          <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-              <div class="row">
-                <div class="col-md-6">
-                  <button
-                    id="choice-one"
-                    type="button"
-                    class="btn active btn-primary btn-lg btn-block"
-                  >
-                    Movie-1
-                  </button>
-                </div>
-                <div class="col-md-6">
-                  <button
-                    id="choice-two"
-                    type="button"
-                    class="btn active btn-lg btn-block btn-primary"
-                  >
-                    Movie-2
-                  </button>
+    <div id="wrapper">
+        <div id="gradient">
+          <div class="container">
+            <section class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="jumbotron animated zoomIn">
+                  <h1>Movie Quote Trivia Game!</h1>
+                  <h5 class="timeRemaining"></h5>
+                  <h3 class="quote questionHeader"></h3>
+                  <div class="answers"></div>
+                  <p class="start-button text-center animated zoomInDown">
+                    <a class="btn btn-primary btn-lg startButton animated pulse infinite" href="#" role="button">
+                      <span class="glyphicon glyphicon-off"></span>
+                    </a>
+                  </p>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <button
-                    id="choice-three"
-                    type="button"
-                    class="btn btn-lg btn-block btn-primary"
-                  >
-                    Movie-3
-                  </button>
-                </div>
-                <div class="col-md-6">
-                  <button
-                    id="choice-four"
-                    type="button"
-                    class="btn btn-block btn-lg btn-primary"
-                  >
-                    Movie-4
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-2"></div>
+            </section>
           </div>
         </div>
       </div>
-    </div>
 
     <!-- jQuery cdn link -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- link to game.js -->
-    <script src="javascript/app.js"></script>
+    <script type="text/javascript" src="javascript/app.js"></script>
   </body>
 </html>
