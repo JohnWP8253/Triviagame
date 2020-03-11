@@ -1,5 +1,38 @@
 .jumbotron {
-    background-color: rgba(240, 248, 255, 0);
+    background-color: rgba(240, 248, 255, 0.064);
     border: 0px;
+    font-family: 'Bungee Inline', cursive;
     text-align: center;
+    background-color: rgba(255, 228, 196, 0.276);
+    color: rgb(157, 62, 46);
+    font-size: 30px;
+}
+h1 {
+    font-size: 70px;
+}
+
+body {
+    background: url("../images/peter-lewicki-Wfh650C1OHU-unsplash.jpg") no-repeat center center fixed; 
+}
+
+.timeRemaining {
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    color: black;
+}
+
+.quote {
+    padding: 20px;
+    font-family: 'Bungee Inline', cursive;
+    font-size: 45px;
+    color: rgba(26, 25, 25, 0.947);
+}
+
+.answers {
+    font-family: 'Bungee', cursive;
+    padding: 10px; 
+    font-size: 60px;
+    color: whitesmoke;
+
 }
