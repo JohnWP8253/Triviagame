@@ -141,7 +141,7 @@ $(document).ready(function (){
 
     function resetQuote() {
         $(".answersAll").remove();
-        $(".answers").append('<img class=answerGif  width="auto" height="auto" src"' + movieTrivia[indexQandA].gif + '">');
+        $(".answers").append('<img class="answerGif"  width="auto" height="auto" src="' + movieTrivia[indexQandA].gif + '">');
         indexQandA++;
         if (indexQandA < movieTrivia.length) {
             setTimeout(function (){
