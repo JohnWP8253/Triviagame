@@ -3,6 +3,7 @@ $(document).ready(function (){
 
     // My movie quote trivia game
     
+
     // Set global variables
     var correctAnswers = 0;
     var wrongAnswers = 0;
@@ -14,7 +15,7 @@ $(document).ready(function (){
     var correct;
 
     var movieTrivia = [{
-        // trivia properties
+        
         quote:"You're gonna need a bigger boat.",
         answers: ["Overboard", "Jaws", "Titanic", "Master and Commander"],
         correctAnswer:"1",
@@ -67,33 +68,104 @@ $(document).ready(function (){
         gif:"https://media.giphy.com/media/IgsXOXGPxfT3O/giphy.gif"
     }];
 
-
     function startGame() {
-        console.log("game has begun");
-        $(".start-button").remove(); // removes start button after clicked
+        $(".answers").empty();
         correctAnswers = 0;
         wrongAnswers = 0;
         unansweredQuestions = 0;
         loadQandA();
+        console.log("anything")
+    }
+    function correctAnswer() {
+        correctAnswers++;
+        $(".timeRemaining").text("YOU GOT IT!");
+        resetQuote();
     }
 
+    function incorrectAnswer() {
+       wrongAnswers++;
+       $(".timeRemaining").text("WOMP WOMP - NO DICE!");
+       resetQuote();
+   }
+
+   function unAnswered() {
+       unansweredQuestions++;
+       $(".timeRemaining").text("GOTTA BE FASTER NEXT TIME, MATE!");
+       resetQuote();
+   }
+
     function loadQandA() {
+        $("#start-button").hide();
         answered = false;
         timeRemaining = 16;
         interValidId = setInterval(timer, 1000);
         if (answered === false) {
             timer();
         }
+
         correct = movieTrivia[indexQandA].correctAnswer;
         var question = movieTrivia[indexQandA].quote;
         $(".quote").html(question);
-        for (var i = 0; 1 <4; i++) {
+        for (var i = 0; i < movieTrivia[indexQandA].answers.length; i++) {
             var answer = movieTrivia[indexQandA].answers[i];
-            $(".answers").append('<h4 class = answersAll id=' + i + '>' + answer + '</h4?');
+            $(".answers").append('<h4 class = answersAll id=' + i + '>' + answer + '</h4>');
         }
-        
 
+        $("h4").click(function() {
+            var id = $(this).attr("id");
+            if (id === correct) {
+                answered = true;
+                $(".quote").text("THE ANSWER IS: " + movieTrivia[indexQandA].answers[correct]);
+                correctAnswer();
+            } else {
+                answered = true;
+                $(".quote").text("YOU PICKED: " + movieTrivia[indexQandA].answers[id] + "....HOWEVER THE RIGHT ANSWER IS: " + movieTrivia[indexQandA].answers[correct]);
+                incorrectAnswer();
+            }
+        });
     }
 
-    
+    function timer() {
+        if (timeRemaining === 0) {
+            answered = true;
+            clearInterval(interValidId);
+            $(".quote").text("THE CORRECT ANSWER IS: " + movieTrivia[indexQandA].answers[correct]);
+            unAnswered();
+        } else if (answered === true) {
+            clearInterval(interValidId);
+        } else {
+            timeRemaining--;
+            $(".timeRemaining").text("YOU'VE GOT " + timeRemaining + " SECONDS TO MAKE A CHOICE");
+        }
+    }
+
+    function resetQuote() {
+        $(".answersAll").remove();
+        $(".answers").append('<div class=answerGif src"' + movieTrivia[indexQandA].gif + '">');
+        indexQandA++;
+        if (indexQandA < movieTrivia.length) {
+            setTimeout(function (){
+                loadQandA();
+                $(".answerGif").remove();
+            }, 5000)
+        } else {
+            setTimeout(function(){
+                $(".quote").remove();
+                $(".timeRemaing").remove();
+                $(".answerGif").remove();
+                $(".answers").append('<h4 class= answersAll end>CORRECT ANSWERS: ' + correctAnswers + '</h4>');
+                $(".answers").append('<h4 class= answersAll end>INCORRECT ANSWERS: ' + wrongAnswers + '</h4>');
+                $(".answers").append('<h4 class= answersAll end>UNANSWERED QUESTIONS: ' + unansweredQuestions + '</h4>');
+                setTimeout(function(){
+                    location.reload();
+                }, 7000);
+            }, 5000);
+        }
+    };
+
+    var start = $('<button>Start</button>').click(function (){
+        startGame();
+    });
+    $("#start-button").append(start).css("text-align", "center");
 })
+

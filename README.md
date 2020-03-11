@@ -16,6 +16,7 @@ Author: John Pendergrass
 #### Collaborated with:
 1. Amy Haerr
 2. Zach Ledford
+3. Kortnie Heidel
 
 ## Works cited
 
